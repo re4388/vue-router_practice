@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h2>
+            <router-link to="/product/appleWatch">link_1</router-link>
+
+        </h2>
+        <h2>
+            <router-link to="/product/iphone">link_2</router-link>
+
+        </h2> -->
+        <h2>
+            <router-link to="/user/evan/post/123">link_1</router-link>
+            <router-link to="/user/ben/post/222">link_2</router-link>
+            <router-link to="/user/QQ/post/333">link_3</router-link>
+
+        </h2>
+
+        <router-view></router-view>
+    </div>
+    <script>
+        // const Product = {
+        //     template: `<div> {{ $route.params.productId }} </div>`
+        // }
+        const User = {
+            template: `<div> {{ $route.params.username }} / {{ $route.params.post_id }}</div>`,
+        }
+
+        const router = new VueRouter({
+            routes: [{
+                path: '/user/:username/post/:post_id',
+                component: User
+            }]
+        })
+
+        const app = new Vue({
+            router
+        }).$mount('#app')
+    </script>
+
+</body>
+
+</html>
